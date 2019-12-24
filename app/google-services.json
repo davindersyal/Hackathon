@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "935520144725",
+    "firebase_url": "https://devicemanagement-e6ae2.firebaseio.com",
+    "project_id": "devicemanagement-e6ae2",
+    "storage_bucket": "devicemanagement-e6ae2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:935520144725:android:9299bea92d3c4c6cb8b3dc",
+        "android_client_info": {
+          "package_name": "com.android.devicemanagement"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "935520144725-el8tcb1mdo68rhuimstl5r9c4jlpdjqo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.android.devicemanagement",
+            "certificate_hash": "470f38b880975a829169819a9e7994de8efbe3d1"
+          }
+        },
+        {
+          "client_id": "935520144725-p04f3meu2uekr2chcuo7o3ap224kr6r8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5231q_Lk1GlYBlyx493kR1iP67UBxwYE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "935520144725-p04f3meu2uekr2chcuo7o3ap224kr6r8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
