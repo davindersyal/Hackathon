@@ -15,6 +15,7 @@ import com.android.devicemanagement.ui.dashboard.DashboardActivity.Companion.USE
 import com.android.devicemanagement.ui.dashboard.viewmodel.DeviceItemModel
 import com.android.devicemanagement.ui.dashboard.viewmodel.UserInfoViewModel
 import com.sdi.joyersmajorplatform.common.livedataext.throttleClicks
+import com.sdi.joyersmajorplatform.common.progressDialog
 import kotlinx.android.synthetic.main.activity_device_info.*
 
 class DeviceInfoActivity : DataBindingActivity<ActivityDeviceInfoBinding>() {
@@ -23,32 +24,76 @@ class DeviceInfoActivity : DataBindingActivity<ActivityDeviceInfoBinding>() {
 
     private val viewModel: UserInfoViewModel by viewModels()
 
-    
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        toolbar2.setNavigationOnClickListener {
+            finish()
+        }
+
+        dialog = progressDialog(R.string.update_status)
         intent?.extras?.getString(DEVICE_NAME)?.let { device_name.setText(it) }
         intent?.extras?.getString(OS)?.let { ip_address.setText(it) }
-        intent?.extras?.getString(DEVICE_ID)?.let { viewModel.deviceId =it }
-        intent?.extras?.getString(DEVICE_STATUS)?.let { viewModel.deviceStatus = it
-            if(it.equals(AddDeviceActivity.ASSIGNED,ignoreCase = true)){ submitbtn.setText("UnAssign") } }
+        intent?.extras?.getString(DEVICE_ID)?.let { viewModel.deviceId = it }
+        intent?.extras?.getString(DEVICE_STATUS)?.let {
+            viewModel.deviceStatus = it
+            if (it.equals(AddDeviceActivity.ASSIGNED, ignoreCase = true)) {
+                submitbtn.setText("Un Assign")
+                username.setFocusable(false)
+                seat_number.setFocusable(false)
+            }
+        }
         intent?.extras?.getString(USER_NAME)?.let { username.setText(it) }
-        intent?.extras?.getString(USER_SEAT_NUMBER)?.let { seat_number.setText(it)}
-        intent?.extras?.getString(USER_ID)?.let { viewModel.userId =it}
+        intent?.extras?.getString(USER_SEAT_NUMBER)?.let { seat_number.setText(it) }
+        intent?.extras?.getString(USER_ID)?.let { viewModel.userId = it }
 
 
 
 
 
-        subscribe(submitbtn.throttleClicks()){
-            if(viewModel.deviceStatus.equals(AddDeviceActivity.ASSIGNED,ignoreCase = true)){
-                 viewModel.updateUserList()
-            } else{
-                viewModel.assignUserList{
-                    if(it){
+        subscribe(submitbtn.throttleClicks()) {
+            if (username.text.toString().isEmpty()) {
+                showMessage("Please enter valid user name")
+            } else if (seat_number.text.toString().isEmpty()) {
+                showMessage("Please enter valid seat number")
+            } else
+            {
+                dialog?.show()
+                if (viewModel.deviceStatus.equals(AddDeviceActivity.ASSIGNED, ignoreCase = true)) {
+                    viewModel.updateUserList { status ->
+                        if (status) {
+                            viewModel.updateItem(viewModel.deviceId) {
+                                if (it) {
+                                    finish()
+                                } else {
+                                    showMessage("Something went wrong, Please try again")
+                                    dialog?.dismiss()
+                                }
+                            }
+                        } else {
+                            showMessage("Something went wrong, Please try again")
+                            dialog?.dismiss()
+                        }
+                    }
+                } else {
+                    viewModel.assignUserList {
+                        if (it) {
+                            viewModel.updateItem(viewModel.deviceId) {
+                                if (it) {
+                                    finish()
+                                } else {
+                                    showMessage("Something went wrong, Please try again")
+                                    dialog?.dismiss()
+                                }
+                            }
+                        } else {
+                            showMessage("Something went wrong, Please try again")
+                            dialog?.dismiss()
+                        }
                     }
                 }
+
             }
-            
         }
 
 
@@ -58,7 +103,6 @@ class DeviceInfoActivity : DataBindingActivity<ActivityDeviceInfoBinding>() {
     override fun onBindView(binding: ActivityDeviceInfoBinding) {
         binding.vm = viewModel
     }
-
 
 
 }

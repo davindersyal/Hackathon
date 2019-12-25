@@ -32,6 +32,8 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/username"
+                android:maxLength="16"
+                android:inputType="text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@={vm.userName}"
@@ -63,6 +65,8 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/seat_number"
+                android:maxLength="10"
+                android:inputType="text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@={vm.seatNumber}"
@@ -82,6 +86,7 @@
                 android:id="@+id/device_name"
                 android:layout_width="match_parent"
                 android:focusable="false"
+
                 android:text="@={vm.deviceName}"
                 android:layout_height="wrap_content"
                 android:hint="Device Name" />

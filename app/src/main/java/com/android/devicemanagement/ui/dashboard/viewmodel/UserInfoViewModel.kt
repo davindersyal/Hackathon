@@ -47,27 +47,35 @@ class UserInfoViewModel @Inject constructor(
         assignToUser.document(id)
             .set(addDeviceList)
             .addOnSuccessListener {
-                updateItem(deviceId)
+               isSuccess(true)
             }
             .addOnFailureListener { e ->
                 isSuccess(false)
             }
     }
 
-    private fun updateItem(deviceId: String) {
+    fun updateItem(deviceId: String,status:(Boolean)->Unit) {
         deviceListCollection.document(deviceId)
             .update(convertHorsePojoToMap())
-            .addOnSuccessListener { Log.e("check", "DocumentSnapshot successfully written!") }
-            .addOnFailureListener { e -> Log.e("sdfsd", "Error writing document", e) }
-
+            .addOnSuccessListener {
+             status(true)
+            }
+            .addOnFailureListener { e ->
+                status(false)
+            }
+        
     }
 
 
-    fun updateUserList() {
+    fun updateUserList(status:(Boolean)->Unit) {
         assignToUser.document(userId)
             .update(convertHorsePojoToMap())
-            .addOnSuccessListener { updateItem(deviceId) }
-            .addOnFailureListener { e -> Log.e("sdfsd", "Error writing document", e) }
+            .addOnSuccessListener {
+                status(true)
+            }
+            .addOnFailureListener { e ->
+                status(false)
+            }
 
     }
 

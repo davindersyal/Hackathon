@@ -7,7 +7,9 @@ import androidx.navigation.fragment.findNavController
 import com.android.devicemanagement.R
 import com.android.devicemanagement.databinding.FragmentSignupBinding
 import com.android.devicemanagement.ui.baseclass.BaseDaggerFragment
+import com.android.devicemanagement.ui.dashboard.DashboardActivity
 import com.android.devicemanagement.ui.login.QrCodeGenerateActivity
+import com.android.devicemanagement.ui.login.StartUpActivity
 import com.android.devicemanagement.ui.login.viewmodel.SignupFragmentViewModel
 import com.sdi.joyersmajorplatform.common.livedataext.throttleClicks
 import kotlinx.android.synthetic.main.fragment_signup.*
@@ -38,33 +40,43 @@ class SignupFragment : BaseDaggerFragment<FragmentSignupBinding>() {
 
         }
         subscribe(verifybtn.throttleClicks()) {
-            dialog?.show()
-            viewModel.fetchCodeList(textInputEditText.text.toString()) { message, verificaiton, id ->
-                if (verificaiton) {
-                    dialog?.setTitle(R.string.saving_device_detail)
-                    viewModel.deviceListMethod {
-                        if (it) {
-                            dialog?.setTitle(R.string.update_status)
-                            viewModel.updateVerificationItem(id) { message, verificaiton, id ->
-                                if (it) {
-                                    dialog?.dismiss()
-                                   val intent = Intent(requireContext(), QrCodeGenerateActivity::class.java)
-                                    intent.putExtra(DEVICE_ID,viewModel.deviceId)
-                                    startActivity(intent)
-                                }else {
-                                    dialog?.dismiss()
-                                    showMessage(message)
-                                }
-                            }
-                        } else {
-                            dialog?.dismiss()
-                            showMessage("Something went wrong, Try again with new code")
-                        }
+            if(textInputEditText.text.toString().isEmpty()){
+              showMessage("Please enter valid code")
+            }else {
+                
+                dialog?.show()
+                viewModel.fetchCodeList(textInputEditText.text.toString()) { message, verificaiton, id ->
+                    if (verificaiton) {
+                        dialog?.setTitle(R.string.saving_device_detail)
+                        viewModel.deviceListMethod {
+                            if (it) {
+                                dialog?.setTitle(R.string.update_status)
+                                viewModel.updateVerificationItem(id) { message, verificaiton, id ->
+                                    if (it) {
+                                        dialog?.dismiss()
 
+                                        showMessage(message)
+                                        val intent = Intent(
+                                            requireContext(),
+                                            QrCodeGenerateActivity::class.java
+                                        )
+                                        intent.putExtra(DEVICE_ID, viewModel.deviceId)
+                                        startActivity(intent)
+                                        (activity as StartUpActivity).finish()
+                                    } else {
+                                        dialog?.dismiss()
+                                        showMessage(message)
+                                    }
+                                }
+                            } else {
+                                dialog?.dismiss()
+                                showMessage("Something went wrong, Try again with new code")
+                            }
+                        }
+                    } else {
+                        dialog?.dismiss()
+                        showMessage(message)
                     }
-                } else {
-                    dialog?.dismiss()
-                    showMessage(message)
                 }
             }
         }

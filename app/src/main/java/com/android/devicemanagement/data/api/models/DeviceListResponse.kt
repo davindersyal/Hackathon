@@ -19,7 +19,8 @@ data class DeviceListResponse(
     @PropertyName("id") var id: String = "",
     @PropertyName("device_name") val device_name: String? = "",
     @PropertyName("os") val os: String? = "",
-    @PropertyName("device_status") val device_status: String?=""
+    @PropertyName("device_status") val device_status: String?="",
+    @PropertyName("verification_id") val verification_id: String?=""
 ): Parcelable
 
 

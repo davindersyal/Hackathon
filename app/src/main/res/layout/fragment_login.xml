@@ -14,9 +14,10 @@
 
         <Button
             android:id="@+id/loginBtn"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="Admin Login"
+                          android:textColor="@android:color/white"
             android:textAllCaps="false"
             android:background="@color/colorPrimary"
             app:layout_constraintBottom_toTopOf="@+id/registerBtn"
@@ -27,10 +28,11 @@
 
         <Button
             android:id="@+id/registerBtn"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:textAllCaps="false"
+            android:textColor="@android:color/white"
             android:text="Register Device"
             android:background="@color/colorPrimary"
             app:layout_constraintBottom_toBottomOf="parent"

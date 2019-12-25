@@ -9,6 +9,10 @@
     <string name ="verifing_code">Verifing...</string>
     <string name ="saving_device_detail">Saving device detail...</string>
     <string name ="update_status">Updating status...</string>
+    <string name ="fetching">Fetching info...</string>
+    <string name="deviceId">DeviceId</string>
+    <string name="deleting">Deleting Detail...</string>
+
 
 
 </resources>

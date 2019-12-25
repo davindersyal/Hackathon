@@ -16,6 +16,9 @@ import com.sdi.joyersmajorplatform.common.livedataext.throttleClicks
 import kotlinx.android.synthetic.main.fragment_dashboard.*
 import org.json.JSONException
 import org.json.JSONObject
+import com.android.devicemanagement.ui.dashboard.fragment.AssignedFragment
+import com.android.devicemanagement.ui.dashboard.fragment.NotAssignedFragment
+
 
 class DashboardActivity : DataBindingActivity<FragmentDashboardBinding>() {
     override val layoutRes: Int
@@ -60,14 +63,19 @@ class DashboardActivity : DataBindingActivity<FragmentDashboardBinding>() {
         view_pager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tab_layout))
         tab_layout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
-                view_pager.setCurrentItem(tab.position)
+              
+                view_pager.currentItem = tab.position
+
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab) {
 
+
+
             }
 
             override fun onTabReselected(tab: TabLayout.Tab) {
+
 
             }
         })

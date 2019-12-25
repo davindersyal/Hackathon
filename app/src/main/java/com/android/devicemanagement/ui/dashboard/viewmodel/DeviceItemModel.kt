@@ -92,7 +92,7 @@ class DeviceItemModel @Inject constructor(
     }
 
 
-    fun fetchUserList(deviceStatus: String, deviceId:String,list: (UserListResponse)->Unit){
+    fun fetchUserList(deviceStatus: String, deviceId:String,list: (UserListResponse?)->Unit){
         assignToUser.whereEqualTo("device_status",deviceStatus).whereEqualTo("device_id", deviceId).get().addOnSuccessListener {
             var addObjects :UserListResponse ?=null
             for (document in it) {
@@ -102,6 +102,8 @@ class DeviceItemModel @Inject constructor(
             }
             addObjects?.let {
                 list(it)
+            }?:run{
+                list(null)
             }
             
         }.addOnFailureListener { e -> Log.e("sdfsd", "Error writing document", e) }
@@ -123,11 +125,17 @@ class DeviceItemModel @Inject constructor(
     }
 
 
-    fun deleteItem(deviceId: String) {
+    fun deleteItem(deviceId: String,status:(Boolean)->Unit) {
         deviceListCollection.document(deviceId)
             .delete()
-            .addOnSuccessListener { Log.e("check", "DocumentSnapshot successfully written!") }
-            .addOnFailureListener { e -> Log.e("sdfsd", "Error writing document", e) }
+            .addOnSuccessListener {
+                status(true)
+
+            }
+            .addOnFailureListener { e ->
+                status(false)
+
+            }
 
     }
 
