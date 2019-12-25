@@ -3,9 +3,9 @@ package com.android.devicemanagement.di
 import androidx.lifecycle.ViewModelProvider
 import com.android.devicemanagement.di.activity.DaggerDashBoardModel
 import com.android.devicemanagement.di.activity.DaggerStartUpModel
+import com.android.devicemanagement.ui.dashboard.AddDeviceActivity
 import com.android.devicemanagement.ui.dashboard.DashboardActivity
 import com.android.devicemanagement.ui.dashboard.DeviceInfoActivity
-import com.android.devicemanagement.ui.dashboard.fragment.DashboardFragment
 import com.android.devicemanagement.ui.login.StartUpActivity
 import dagger.Binds
 import dagger.Module
@@ -21,8 +21,11 @@ abstract class UiModule {
     @ContributesAndroidInjector(modules = [DaggerStartUpModel::class])
         abstract fun contributeSignUpActivity(): StartUpActivity
 
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector(modules = [DaggerDashBoardModel::class])
     abstract fun contributeDashboardActivity(): DashboardActivity
+
+    @ContributesAndroidInjector
+    abstract fun contributeAddDeviceActivity(): AddDeviceActivity
 
     @ContributesAndroidInjector
     abstract fun contributeDeviceInfoActivity(): DeviceInfoActivity

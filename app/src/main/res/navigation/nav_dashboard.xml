@@ -9,7 +9,7 @@
 
     <fragment
         android:id="@+id/dashboardFragment"
-        android:name="com.android.devicemanagement.ui.dashboard.fragment.DashboardFragment"
+        android:name="com.android.devicemanagement.ui.dashboard.fragment.NotAssignedFragment"
         android:label="DashboardFragment"
         tools:layout="@layout/fragment_dashboard"
         />

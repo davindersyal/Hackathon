@@ -2,6 +2,7 @@ package com.android.devicemanagement.di
 
 import androidx.lifecycle.ViewModel
 import com.android.devicemanagement.ui.dashboard.viewmodel.DeviceItemModel
+import com.android.devicemanagement.ui.dashboard.viewmodel.UserInfoViewModel
 import com.android.devicemanagement.ui.login.viewmodel.LoginFragmentViewModel
 import dagger.Binds
 import dagger.Module
@@ -24,6 +25,18 @@ abstract class ViewModelModule {
     abstract fun bindDeviceItemModel(
         viewModel: DeviceItemModel
     ): ViewModel
+
+
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(UserInfoViewModel::class)
+    abstract fun bindUserInfoViewModel(
+        viewModel: UserInfoViewModel
+    ): ViewModel
+
+
+
 
 
 

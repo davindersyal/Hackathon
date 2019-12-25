@@ -4,7 +4,7 @@ interface FireBaseNodes {
 
     companion object {
         const val DEVICE_LIST_COLLECTION = "device_list"
-        const val NEW_HORSE_COLLECTION = "test_horses"
+        const val ASSIGNED_USER_LIST = "assigned_user_list"
     }
 
 }

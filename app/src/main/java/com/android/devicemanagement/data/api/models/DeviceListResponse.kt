@@ -5,19 +5,22 @@ import com.google.firebase.firestore.PropertyName
 import kotlinx.android.parcel.Parcelize
 
 
+
+
+
+
+//@PropertyName("qr_string") val qrString: String? = "",
+//@PropertyName("check_out") val check_out: String? = "",
+//@PropertyName("check_in") val check_in: String? = "",
+//@PropertyName("device_token") var device_token: String? = "",
+
 @Parcelize
 data class DeviceListResponse(
     @PropertyName("id") var id: String = "",
-    @PropertyName("device_name") var device_name: String? = "",
-    @PropertyName("user_name") val user_name: String? = "",
-    @PropertyName("IpAddress") val IpAddress: String? = "",
-    @PropertyName("seat_number") val seat_number: String? = "",
-    @PropertyName("check_out") val check_out: String? = "",
-    @PropertyName("check_in") val check_in: String? = ""
+    @PropertyName("device_name") val device_name: String? = "",
+    @PropertyName("os") val os: String? = "",
+    @PropertyName("device_status") val device_status: String?=""
 ): Parcelable
-
-
-
 
 
 

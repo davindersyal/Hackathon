@@ -21,8 +21,8 @@ class ApiModule {
 
     @Singleton
     @Provides
-    @Named(FireBaseNodes.NEW_HORSE_COLLECTION)
+    @Named(FireBaseNodes.ASSIGNED_USER_LIST)
     fun fireNewHorseAddApi(firestore: FirebaseFirestore): CollectionReference {
-        return firestore.collection(FireBaseNodes.NEW_HORSE_COLLECTION)
+        return firestore.collection(FireBaseNodes.ASSIGNED_USER_LIST)
     }
 }

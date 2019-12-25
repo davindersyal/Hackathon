@@ -1,9 +1,7 @@
 package com.android.devicemanagement.di.activity
 
-import com.android.devicemanagement.ui.dashboard.fragment.DashboardFragment
-import com.android.devicemanagement.ui.login.fragment.ForgotPasswordFragment
-import com.android.devicemanagement.ui.login.fragment.LoginFragment
-import com.android.devicemanagement.ui.login.fragment.SignupFragment
+import com.android.devicemanagement.ui.dashboard.fragment.AssignedFragment
+import com.android.devicemanagement.ui.dashboard.fragment.NotAssignedFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -11,7 +9,10 @@ import dagger.android.ContributesAndroidInjector
 abstract class DaggerDashBoardModel {
 
     @ContributesAndroidInjector
-    abstract fun contributeDashboardFragment(): DashboardFragment
+    abstract fun contributeNotAssignedFragment(): NotAssignedFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeAssignedFragment(): AssignedFragment
 
 
 

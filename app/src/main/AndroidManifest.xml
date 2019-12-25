@@ -15,10 +15,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.android.devicemanagement.ui.login.StartUpActivity"/>
-        <activity android:name=".ui.dashboard.DashboardActivity"/>
+        <activity android:name="com.android.devicemanagement.ui.login.StartUpActivity" />
+        <activity android:name=".ui.dashboard.DashboardActivity" />
 
-<activity android:name=".ui.dashboard.DeviceInfoActivity"></activity>
+        <activity android:name=".ui.dashboard.DeviceInfoActivity"></activity>
+        <activity android:name=".ui.dashboard.AddDeviceActivity"></activity>
         <activity
             android:name="com.android.devicemanagement.ui.SplashActivity"
             android:label="@string/app_name"
@@ -26,6 +27,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

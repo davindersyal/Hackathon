@@ -5,12 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     >
 
-
     <data>
         <variable
             name="vm"
-            type="com.android.devicemanagement.ui.dashboard.viewmodel.UserInfoViewModel" />
+            type="com.android.devicemanagement.ui.dashboard.viewmodel.DeviceItemModel" />
+
     </data>
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -28,19 +29,18 @@
             android:layout_marginRight="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar2">
+            app:layout_constraintTop_toBottomOf="@+id/addviceToolbar">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@={vm.userName}"
-                android:hint="User Name" />
+                android:text="@={vm.deviceName}"
+                android:hint="Device Name" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar2"
-            app:title="Assign Device"
+            android:id="@+id/addviceToolbar"
+            app:title="Add device"
             app:titleTextColor="@android:color/white"
             app:navigationIcon="@drawable/ic_arrow_back_black_24dp"
             android:layout_width="match_parent"
@@ -62,60 +62,23 @@
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/seat_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@={vm.seatNumber}"
-                android:hint="Seat Number" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            app:layout_constraintEnd_toEndOf="@+id/textInputLayout2"
-            app:layout_constraintStart_toStartOf="@+id/textInputLayout2"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/device_name"
-                android:layout_width="match_parent"
-                android:focusable="false"
-                android:text="@={vm.deviceName}"
-                android:layout_height="wrap_content"
-                android:hint="Device Name" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout6"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            app:layout_constraintEnd_toEndOf="@+id/textInputLayout3"
-            app:layout_constraintStart_toStartOf="@+id/textInputLayout3"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ip_address"
-                android:layout_width="match_parent"
-                android:focusable="false"
-                android:text="@{vm.os}"
-                android:layout_height="wrap_content"
-                android:hint="Os" />
+                android:text="@={vm.operation_system}"
+                android:hint="Operating System" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
         <Button
             android:id="@+id/submitbtn"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="Assign"
+            android:layout_marginTop="24dp"
+            android:text="Save"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout6" />
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
