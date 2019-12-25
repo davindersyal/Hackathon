@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.android.devicemanagement.ui.dashboard.viewmodel.DeviceItemModel
 import com.android.devicemanagement.ui.dashboard.viewmodel.UserInfoViewModel
 import com.android.devicemanagement.ui.login.viewmodel.LoginFragmentViewModel
+import com.android.devicemanagement.ui.login.viewmodel.SignupFragmentViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -33,6 +34,13 @@ abstract class ViewModelModule {
     @ViewModelKey(UserInfoViewModel::class)
     abstract fun bindUserInfoViewModel(
         viewModel: UserInfoViewModel
+    ): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(SignupFragmentViewModel::class)
+    abstract fun bindSignupFragmentViewModel(
+        viewModel: SignupFragmentViewModel
     ): ViewModel
 
 

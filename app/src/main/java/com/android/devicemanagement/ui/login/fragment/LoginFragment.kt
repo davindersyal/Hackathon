@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 
 import com.android.devicemanagement.R
 import com.android.devicemanagement.databinding.FragmentLoginBinding
@@ -29,6 +30,12 @@ class LoginFragment : BaseDaggerFragment<FragmentLoginBinding>() {
             var intent =Intent(requireContext(),DashboardActivity::class.java)
           startActivity(intent)
       }
+
+      subscribe(registerBtn.throttleClicks()){
+          var action =LoginFragmentDirections.actionLoginFragmentToSignupFragment()
+          findNavController().navigate(action)
+      }
+
 
 
     }

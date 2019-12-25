@@ -8,7 +8,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimary"
+        android:background="@android:color/white"
         tools:context=".ui.login.fragment.LoginFragment">
 
 
@@ -18,19 +18,21 @@
             android:layout_height="wrap_content"
             android:text="Admin Login"
             android:textAllCaps="false"
-            app:layout_constraintBottom_toTopOf="@+id/button"
+            android:background="@color/colorPrimary"
+            app:layout_constraintBottom_toTopOf="@+id/registerBtn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/registerBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:textAllCaps="false"
             android:text="Register Device"
+            android:background="@color/colorPrimary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/loginBtn"
             app:layout_constraintStart_toStartOf="@+id/loginBtn"

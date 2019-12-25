@@ -25,4 +25,15 @@ class ApiModule {
     fun fireNewHorseAddApi(firestore: FirebaseFirestore): CollectionReference {
         return firestore.collection(FireBaseNodes.ASSIGNED_USER_LIST)
     }
+
+
+    @Singleton
+    @Provides
+    @Named(FireBaseNodes.VERIFIED_DEVICE_CODE)
+    fun fireVerifiedDeviceCodeApi(firestore: FirebaseFirestore): CollectionReference {
+        return firestore.collection(FireBaseNodes.VERIFIED_DEVICE_CODE)
+    }
+
+
+
 }

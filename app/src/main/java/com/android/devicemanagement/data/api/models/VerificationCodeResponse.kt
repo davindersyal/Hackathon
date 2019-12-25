@@ -1,0 +1,24 @@
+package com.android.devicemanagement.data.api.models
+
+import android.os.Parcelable
+import com.google.firebase.firestore.PropertyName
+import kotlinx.android.parcel.Parcelize
+
+
+//@PropertyName("qr_string") val qrString: String? = "",
+//@PropertyName("check_out") val check_out: String? = "",
+//@PropertyName("check_in") val check_in: String? = "",
+//@PropertyName("device_token") var device_token: String? = "",
+
+@Parcelize
+data class VerificationCodeResponse(
+    @PropertyName("code") val code: String? = "",
+    @PropertyName("status") val status: String? = "",
+    @PropertyName("id") val id: String? = ""
+
+
+) : Parcelable
+
+
+
+

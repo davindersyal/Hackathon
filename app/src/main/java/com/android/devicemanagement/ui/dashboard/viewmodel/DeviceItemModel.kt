@@ -103,10 +103,7 @@ class DeviceItemModel @Inject constructor(
             addObjects?.let {
                 list(it)
             }
-
-
-
-
+            
         }.addOnFailureListener { e -> Log.e("sdfsd", "Error writing document", e) }
     }
 
@@ -147,7 +144,6 @@ class DeviceItemModel @Inject constructor(
             "id" to deviceId,
             "device_name" to "check",
             "user_name" to "sdf",
-
             "seat_number" to seatNumber,
             "check_out" to check_out,
             "check_in" to check_in

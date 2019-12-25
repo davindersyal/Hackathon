@@ -6,6 +6,7 @@ import com.android.devicemanagement.di.activity.DaggerStartUpModel
 import com.android.devicemanagement.ui.dashboard.AddDeviceActivity
 import com.android.devicemanagement.ui.dashboard.DashboardActivity
 import com.android.devicemanagement.ui.dashboard.DeviceInfoActivity
+import com.android.devicemanagement.ui.login.QrCodeGenerateActivity
 import com.android.devicemanagement.ui.login.StartUpActivity
 import dagger.Binds
 import dagger.Module
@@ -29,6 +30,10 @@ abstract class UiModule {
 
     @ContributesAndroidInjector
     abstract fun contributeDeviceInfoActivity(): DeviceInfoActivity
+
+    @ContributesAndroidInjector
+    abstract fun contributeQrCodeGenerateActivity(): QrCodeGenerateActivity
+
 
 
 //    @ContributesAndroidInjector

@@ -6,5 +6,9 @@
     <string name="network_error_forbidden">Permission denied</string>
     <string name="network_error_unknown">Network Error</string>
     <string name ="saving">Saving...</string>
+    <string name ="verifing_code">Verifing...</string>
+    <string name ="saving_device_detail">Saving device detail...</string>
+    <string name ="update_status">Updating status...</string>
+
 
 </resources>
